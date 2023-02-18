@@ -13,12 +13,12 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         if 'value' in query:
             value = query['value'][0]
-            if value=='000000003':
-                response='red'
-            if value=='000000004':
-                response='green'
-            if value=='100000020':
-                response='blue'
+            if value=='000000003' or value=='000000005':
+                response="red"
+            if value=='000000004' or value=='000000019':
+                response="green"
+            if value=='100000020'or value=='000000009':
+                response="blue"
         else:
             response = 'No value provided'
 

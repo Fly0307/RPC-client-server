@@ -69,7 +69,7 @@ if __name__ == '__main__':
     # response = Armclient_1.call('GetOrderId', [])
     # print(response)
     # print(response[0])
-    response = Armclient_1.call('CargoPlacement', ['red'])
+    response = Armclient_1.call('CargoPlacement', ['blue'])
     # print(response[1])
     # if response[0]:
     #     ret=DBClient.call(response[1])

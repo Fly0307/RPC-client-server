@@ -197,6 +197,7 @@ def ArmPi_catch(Armclient,DBClient,num):
         if not ArmPi_free(Armclient):
             continue
         #开始抓取
+        print("允许抓取")
         Armclient.call('ArmHeartbeat',[True])
         #获取订单号
         response = Armclient.call('GetOrderId', [])
@@ -213,6 +214,7 @@ def ArmPi_catch(Armclient,DBClient,num):
         if response[0]:
             #开始放置
             ret=DBClient.call(response[1])
+            print("put to %s"%(ret.text))
             print(ret.text)
             response = Armclient.call('CargoPlacement', [ret.text])
             if response[0]:
