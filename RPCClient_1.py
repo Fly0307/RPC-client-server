@@ -91,6 +91,7 @@ lock = threading.Lock()
 
 #传入两组机械臂的Url,修改当前
 def ArmPis_free(ClientUrls_1,ClientUrls_2):
+    global IsFree
     #仅一组在运行，则直接结束
     print('[INFO] start detec IsFree')
     if len(ClientUrls_1)==0 or len(ClientUrls_2)==0:
@@ -135,9 +136,9 @@ def ArmPi_free(ArmPiClient):
     while not isFree:
         state=ArmPiClient.call('ArmHeartbeat',[False])
         print('state',state)
-        if state[1]==0:
+        if state[1]==0 :
             return False
-        if state[1]==1 or state[1]==3:
+        if state[1]==1 or state[1]==3 or state[1]==4:
              return True
     #循环等待该组机械臂均为空闲状态
     #两个机械臂均为0(未识别)或者已经抓取待放置阶段
@@ -162,7 +163,7 @@ def ArmPi_free(ArmPiClient):
     #         IsFree[num]=False
     # return isFree
 def ArmPis():
-    url_1='http://192.168.0.102:9030'
+    url_1='http://192.168.0.104:9030'
     # url_2='http://192.168.0.104:9030'
     Clients=[RPCClient(url_1)]
     # Clients_2=[RPCClient(url_2)]
@@ -188,6 +189,7 @@ def ArmPi_client(url,num):
 
 #传入一个ArmPi客户端和一个DB控制客户端
 def ArmPi_catch(Armclient,DBClient,num):
+    global IsFree
     # Armclients=[Armclient]
     # count=0
     #机械臂组组号 0 1
@@ -200,13 +202,14 @@ def ArmPi_catch(Armclient,DBClient,num):
     time.sleep(1)
     while True:
         #判断当前机械臂组是否可以抓取
+        print('Is Free',IsFree[1-num])
         if not IsFree[1-num]:
             continue
         #判断当前机械臂是否空闲，空闲则开始抓取
         if not ArmPi_free(Armclient):
             continue
         #开始抓取
-        print("允许抓取")
+        print("允许抓取",num)
         Armclient.call('ArmHeartbeat',[True])
         #获取订单号
         response = Armclient.call('GetOrderId', [])
