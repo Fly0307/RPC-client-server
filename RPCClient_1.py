@@ -80,7 +80,7 @@ def clientcode():
         break
 
 # 0 未识别   3 已经抓取悬空
-# 1 抓取阶段 2 放置阶段 
+# 1 抓取阶段 2 放置阶段
 ArmRuning_1=0
 #定义一个全局变量列表,可以作为两个机械臂组的‘锁’，
 # 为正在抓取阶段(1)则为False，
@@ -163,7 +163,7 @@ def ArmPi_free(ArmPiClient):
     #         IsFree[num]=False
     # return isFree
 def ArmPis():
-    url_1='http://192.168.0.104:9030'
+    url_1='http://192.168.0.102:9030'
     # url_2='http://192.168.0.104:9030'
     Clients=[RPCClient(url_1)]
     # Clients_2=[RPCClient(url_2)]
