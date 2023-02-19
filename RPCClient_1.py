@@ -91,7 +91,6 @@ lock = threading.Lock()
 
 #传入两组机械臂的Url,修改当前
 def ArmPis_free(ClientUrls_1,ClientUrls_2):
-    global IsFree
     #仅一组在运行，则直接结束
     print('[INFO] start detec IsFree')
     if len(ClientUrls_1)==0 or len(ClientUrls_2)==0:
@@ -131,7 +130,6 @@ def ArmPis_free(ClientUrls_1,ClientUrls_2):
 #判断机械臂组是否已经完成一轮抓取
 # 如果处于悬空阶段和抓取阶段则开始后续操作
 def ArmPi_free(ArmPiClient):
-    # num=len(ArmPiClient)
     print('[INFO] start detec ArmPi_free()')
     isFree=False
     while not isFree:
@@ -165,20 +163,21 @@ def ArmPi_free(ArmPiClient):
     # return isFree
 def ArmPis():
     url_1='http://192.168.0.102:9030'
-    url_2='http://192.168.0.104:9030'
+    # url_2='http://192.168.0.104:9030'
     Clients=[RPCClient(url_1)]
-    Clients_2=[RPCClient(url_2)]
-    thread1 = threading.Thread(target=ArmPis_free, args=(Clients,Clients_2))
+    # Clients_2=[RPCClient(url_2)]
+    # thread1 = threading.Thread(target=ArmPis_free, args=(Clients,Clients_2))
+    thread1 = threading.Thread(target=ArmPis_free, args=(Clients,[]))
     thread2 = threading.Thread(target=ArmPi_client, args=(url_1,0))
-    thread3 = threading.Thread(target=ArmPi_client, args=(url_2,1))
+    # thread3 = threading.Thread(target=ArmPi_client, args=(url_2,1))
     # 启动线程
     thread1.start()
     thread2.start()
-    thread3.start()
+    # thread3.start()
     # 等待两个线程结束
     thread1.join()
     thread2.join()
-    thread3.join()
+    # thread3.join()
 
 #作为一个子线程运行
 def ArmPi_client(url,num):
@@ -189,7 +188,6 @@ def ArmPi_client(url,num):
 
 #传入一个ArmPi客户端和一个DB控制客户端
 def ArmPi_catch(Armclient,DBClient,num):
-    global IsFree
     # Armclients=[Armclient]
     # count=0
     #机械臂组组号 0 1
@@ -202,7 +200,6 @@ def ArmPi_catch(Armclient,DBClient,num):
     time.sleep(1)
     while True:
         #判断当前机械臂组是否可以抓取
-        print('Is Free',IsFree[1-num])
         if not IsFree[1-num]:
             continue
         #判断当前机械臂是否空闲，空闲则开始抓取
