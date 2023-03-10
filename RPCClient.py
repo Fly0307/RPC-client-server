@@ -191,7 +191,7 @@ def ArmPi_catch(Armclient,DBClient,num):
     global orders
     #机械臂组组号 0 1
     # 启动机械臂服务
-    response = Armclient.call('LoadFunc', [7],)
+    response = Armclient.call('LoadFunc', [1],)
     print(response)
     response = Armclient.call('StartFunc', [])
     print(response)
