@@ -60,7 +60,7 @@ def clientcode():
     # Armclient_3 = RPCClient('URL')
     # Armclient_4 = RPCClient('URL')
     # 启动机械臂服务
-    response = Armclient_1.call('LoadFunc', [7],)
+    response = Armclient_1.call('LoadFunc', [2],)
     print(response)
     response = Armclient_1.call('StartFunc', [])
     print(response)
@@ -79,8 +79,8 @@ def clientcode():
             print(response)
         break
 
-# 0 未识别   3 已经抓取悬空
-# 1 抓取阶段 2 放置阶段 
+# 0 未识别    3 已经抓取悬空 4 识别到，但未抓取
+# 1 抓取阶段  2 放置阶段
 ArmRuning_1=0
 #定义一个全局变量列表,可以作为两个机械臂组的‘锁’，
 # 为正在抓取阶段(1)则为False，
@@ -156,8 +156,6 @@ def ArmPi_free(ArmPiClient):
             return False
         if state[1]==1 or state[1]==3 or state[1]==4:
              return True
-    #循环等待该组机械臂均为空闲状态
-    #两个机械臂均为0(未识别)或者已经抓取待放置阶段
 
 def ArmPis():
     url_1='http://192.168.0.102:9030'
@@ -191,10 +189,10 @@ def ArmPi_catch(Armclient,DBClient,num):
     global orders
     #机械臂组组号 0 1
     # 启动机械臂服务
-    response = Armclient.call('LoadFunc', [1],)
-    print(response)
+    response = Armclient.call('LoadFunc', [2],)
+    print(f'LoadFunc:{response}')
     response = Armclient.call('StartFunc', [])
-    print(response)
+    print(f'StartFunc:{response}')
     while True:
         #判断当前机械臂是否空闲，空闲则开始抓取
         if not ArmPi_free(Armclient):
@@ -271,7 +269,7 @@ def ArmPi_catch(Armclient,DBClient,num):
     DBClient=HTTPClient('http://192.168.0.103:8000')
     Armclients=[Armclient]
     # 启动服务
-    response = Armclient.call('LoadFunc', [7],)
+    response = Armclient.call('LoadFunc', [2],)
     print(response)
     response = Armclient.call('StartFunc', [])
     print(response)
@@ -284,7 +282,7 @@ def ArmPi_catch(Armclient,DBClient,num):
         
         print(response)
         print(response[0])
-        print(response[1])
+        print(response[2])
         state=Armclient.call('ArmHeartbeat',[True])
         print(state)
         if response[1]=='null':
@@ -292,7 +290,7 @@ def ArmPi_catch(Armclient,DBClient,num):
             # count+=1
             continue
         if response[0]:
-            ret=DBClient.call(response[1])
+            ret=DBClient.call(response[2])
             print(ret.text)
             response = Armclient.call('CargoPlacement', [ret.text])
             print(response)
@@ -312,7 +310,7 @@ if __name__ == '__main__':
     # Armclient_3 = RPCClient('URL')
     # Armclient_4 = RPCClient('URL')
     # 启动机械臂服务
-    # response = Armclient_1.call('LoadFunc', [7],)
+    # response = Armclient_1.call('LoadFunc', [2],)
     # print(response)
     # response = Armclient_1.call('StartFunc', [])
     # print(response)

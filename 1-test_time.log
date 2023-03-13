@@ -1,0 +1,420 @@
+[INFO] start detec IsFree
+LoadFunc[False, 'E04 - Operation timeout!']
+StartFunc[False, 'E04 - Operation timeout!']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+state [False, 'E04 - Operation timeout!']
+Traceback (most recent call last):
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 224, in <module>
+    ArmPis()
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 155, in ArmPis
+    thread2.join()
+  File "/usr/lib/python3.9/threading.py", line 1033, in join
+    self._wait_for_tstate_lock()
+  File "/usr/lib/python3.9/threading.py", line 1049, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+KeyboardInterrupt
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.9/http/client.py", line 1347, in getresponse
+    response.begin()
+  File "/usr/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.9/http/client.py", line 276, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 532, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 718, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.9/http/client.py", line 1347, in getresponse
+    response.begin()
+  File "/usr/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.9/http/client.py", line 276, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/threading.py", line 954, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.9/threading.py", line 892, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 163, in ArmPi_client
+    ArmPi_catch(Armclient,DBClient,num)#机械臂组组号 0 1
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 184, in ArmPi_catch
+    if not ArmPi_free(Armclient):
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 137, in ArmPi_free
+    state=ArmPiClient.call('ArmHeartbeat',[False])
+  File "/home/raspberry/RPC-client-server/RPCClient_1.py", line 49, in call
+    response = requests.post(self.url, data=json.dumps(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '100000020']
+True
+100000020
+orderID=100000020
+DBClinet response:<Response [200]>,req_time=95.46528600003512ms
+put to 天津
+[True, '100000020']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '100000020']
+True
+100000020
+orderID=100000020
+DBClinet response:<Response [200]>,req_time=26.66909400068107ms
+put to 天津
+[True, '100000020']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=50.690930998825934ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=23.818509000193444ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000009']
+True
+000000009
+orderID=000000009
+DBClinet response:<Response [200]>,req_time=24.56521000021894ms
+put to 上海
+[True, '000000009']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000009']
+True
+000000009
+orderID=000000009
+DBClinet response:<Response [200]>,req_time=17.167623998830095ms
+put to 上海
+[True, '000000009']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 2]
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=18.59791700007918ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=47.930623000866035ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000003']
+True
+000000003
+orderID=000000003
+DBClinet response:<Response [200]>,req_time=80.87552300094103ms
+put to 天津
+[True, '000000003']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000003']
+True
+000000003
+orderID=000000003
+DBClinet response:<Response [200]>,req_time=15.466914001081022ms
+put to 天津
+[True, '000000003']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=36.24714099896664ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=28.095093999581877ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 2]
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=39.48347699952137ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=45.49384399979317ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=26.97534900107712ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=45.60234200107516ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000005']
+True
+000000005
+orderID=000000005
+DBClinet response:<Response [200]>,req_time=22.788727001170628ms
+put to 成都
+[True, '000000005']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000005']
+True
+000000005
+orderID=000000005
+DBClinet response:<Response [200]>,req_time=27.217269000175293ms
+put to 成都
+[True, '000000005']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=37.27609700035828ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000004']
+True
+000000004
+orderID=000000004
+DBClinet response:<Response [200]>,req_time=23.50733700041019ms
+put to 天津
+[True, '000000004']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 4]
+允许抓取 0
+GetOrderId[True, '000000005']
+True
+000000005
+orderID=000000005
+DBClinet response:<Response [200]>,req_time=62.87024800076324ms
+put to 成都
+[True, '000000005']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 1]
+允许抓取 0
+GetOrderId[True, '000000005']
+True
+000000005
+orderID=000000005
+DBClinet response:<Response [200]>,req_time=16.97450400024536ms
+put to 成都
+[True, '000000005']
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
+state [True, 0]
+Is Free True
+[INFO] start detec ArmPi_free()
