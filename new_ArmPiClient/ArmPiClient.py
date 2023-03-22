@@ -3,9 +3,8 @@ import threading
 import queue
 import time
 import RPCClient
-import HTTPClient
+from HTTPClient import *
 import requests
-
 
 
 QUEUE_RPC = queue.Queue(10)
@@ -17,7 +16,7 @@ ArmPis_1 = set()
 ArmPis_2 = set()
 
 # 注册http服务
-url = "http://localhost"
+url = "http://192.168.0.100:8092/getDst"
 httpclient = HTTPClient(url)
 
 
@@ -65,9 +64,13 @@ def add_orderIDs(orderID_list):
     :param orderID_list: 订单号列表
     """
     global orderIDs
+    print(f"orderID_list={orderID_list}")
     for orderID in orderID_list:
         if orderID not in orderIDs:
             orderIDs.add(orderID)
+
+    print(f"orderIDs={orderIDs}")
+    get_orders_address()
     return True
 
 
@@ -109,6 +112,7 @@ def update_state(ArmPi_id):
     else:
         ArmPis_1.remove(ArmPi_id)
     return True
+
 
 if __name__ == "__main__":
     # 启动RPC服务

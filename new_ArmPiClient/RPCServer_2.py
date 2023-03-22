@@ -2,11 +2,12 @@ import sys
 import threading
 # from jsonrpc import JSONRPCResponseManager, dispatcher
 sys.path.append('/home/raspberry/.local/lib/python3.9/site-packages')
-from jsonrpc import JSONRPCResponseManager,dispatcher
+# from jsonrpc import JSONRPCResponseManager,dispatcher
 from werkzeug.serving import run_simple
 from werkzeug.wrappers import Request, Response
 import time
 import ArmPiClient
+
 
 if sys.version_info.major == 2:
     print("Please run this program with python3!")
