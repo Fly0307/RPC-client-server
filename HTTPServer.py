@@ -5,11 +5,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 # 假设这是服务器端保存的订单号和目的地的数据
 order_destinations = {
-    "0000000005": "成都",
-    "0000000004": "天津",
-    "0000000003": "上海",
-    "0000000009": "上海",
-    "1000000020": "上海"
+    "000000005": "成都",
+    "000000004": "天津",
+    "000000003": "上海",
+    "000000009": "上海",
+    "100000020": "上海",
+    "000000019": "成都"
 }
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
@@ -46,10 +47,12 @@ class RequestHandler(BaseHTTPRequestHandler):
     
     def do_POST(self):
         # 解析请求数据
+        print(self)
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
-        order_numbers = json.loads(post_data)
-        
+        order_numbers = json.loads(post_data)["orders"]
+        # order_numbers=orders_json["orders"]
+        print(order_numbers)
         # 查询订单号对应的目的地
         result = {}
         for order_number in order_numbers:

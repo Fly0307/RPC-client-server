@@ -1,0 +1,17 @@
+ * Running on http://localhost:9030/ (Press CTRL+C to quit)
+192.168.0.102 - - [23/Mar/2023 14:24:23] "[37mPOST / HTTP/1.1[0m" 200 -
+192.168.0.102 - - [23/Mar/2023 14:24:25] "[37mPOST / HTTP/1.1[0m" 200 -
+strat Armpi RPC
+strat Armpi RPC
+b'{"method": "Add_OrderIDs", "params": [["000000004", "000000009", "000000005", "100000020"]], "jsonrpc": "2.0", "id": 3341406643371}'
+Add Order IDs into orderIDs
+orderID_list=['000000004', '000000009', '000000005', '100000020']
+orderIDs={'100000020', '000000005', '000000004', '000000009'}
+b'{"method": "Get_Adress", "params": [[0, "000000004"]], "jsonrpc": "2.0", "id": 3694879336670}'
+Get adress from orderIDs
+Traceback (most recent call last):
+  File "/home/raspberry/RPC-client-server/new_ArmPiClient/ArmPiClient.py", line 136, in <module>
+    startClientRPC()
+  File "/home/raspberry/RPC-client-server/new_ArmPiClient/ArmPiClient.py", line 33, in startClientRPC
+    time.sleep(0.005)
+KeyboardInterrupt

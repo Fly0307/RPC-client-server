@@ -35,8 +35,8 @@ def Get_Adress(id_order):
     """
     从边服务获取订单和抓取状态
     """
-    print("Get adress from orderIDs")
-    return runbymainth(ArmPiClient.get_address, id_order)
+    print(f"Get adress from orderIDs id_order={id_order}")
+    return runbymainth(ArmPiClient.get_address, (id_order[0],id_order[1]))
 
 @dispatcher.add_method
 def Update_state(Armpi_id):
@@ -76,6 +76,7 @@ def runbymainth(req, pas):
             if count > 200:
                 break
         if ret[2] is not None:
+            print(f"ret={ret},ret[2]={ret[2]}")
             if ret[2][0]:
                 return ret[2]
             else:

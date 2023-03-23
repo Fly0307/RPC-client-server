@@ -14,6 +14,7 @@ class HTTPClient():
         Params['id']=param
         response = requests.post(self.url, params=Params, headers=self.headers)
         return response
+
 def httptets1():
     # url = 'http://192.168.0.100:8088'
     # params = {'id': '000000003'}
@@ -21,7 +22,7 @@ def httptets1():
 
     # response = requests.get(url, params=params, headers=headers)
     # print(response.text)
-    HTTPclient=HTTPClient('http://192.168.0.100:8092/getDst')
+    HTTPclient=HTTPClient('http://localhost:8000/getDst')
     orderID="000000004"
     print(f"orderID={orderID}")
     ret=HTTPclient.call(orderID)
@@ -120,15 +121,50 @@ def time_test_2():
     print("Average query time per group: {:.2f} seconds".format(average_time))
 
 def query_time():
-    url = "http://192.168.43.9:8092/getDst"
+    url = "http://192.168.0.100:8092/getDst"
     # 定义每组订单号的数量和重复查询次数
     order_count = 10
-    repeat_count = 1
+    repeat_count = 100
 
     start_time = time.perf_counter()
 
     for i in range(repeat_count):
         orders = [generate_order_number() for _ in range(order_count)]
+        payload = {'orders': orders}
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, json=payload,headers=headers)
+        # print(response.request.headers)
+        # print(response.request.body)
+        # print("response: {}".format(response))
+        # print("response text content:", response.text)
+        #获取字节形式的相应内容并用utf-8格式来解码
+        # print("response content:", response.content.decode())
+        # print(response)
+        data = response.json()
+        # print(f"data={data}")
+        order_address_dict = defaultdict(set)
+        for order, address in data.items():
+            order_address_dict[order]=address
+        # print order and its corresponding addresses
+        # for order, addresses in order_address_dict.items():
+        #     print(f"Order: {order}, Addresses: {addresses}")
+        
+    end_time = time.perf_counter()
+
+    avg_time = (end_time - start_time) / repeat_count
+    print(f"Average time for each batch of {order_count} orders: {avg_time*1000} ms")
+
+def local_test():
+    url = "http://localhost:8000/getDst"
+    # 定义每组订单号的数量和重复查询次数
+    order_count = 5
+    repeat_count = 1
+
+    start_time = time.perf_counter()
+
+    for i in range(repeat_count):
+        # orders = [generate_order_number() for _ in range(order_count)]
+        orders=["000000005","000000004","000000003","000000009","100000020"]
         payload = {'orders': orders}
         headers = {'Content-Type': 'application/json'}
         response = requests.post(url, json=payload,headers=headers)
@@ -157,3 +193,4 @@ if __name__=="__main__":
     # httptets1()
     # httptest2()
     query_time()
+    # local_test()
