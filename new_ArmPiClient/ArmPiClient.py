@@ -65,15 +65,15 @@ def get_orders_address():
     payload = {'orders': orderIDs_list}
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url, json=payload,headers=headers)
-    print(response.request.headers)
-    print(response.request.body)
-    print("response: {}".format(response))
-    print("response text content:", response.text)
+    # print(response.request.headers)
+    # print(response.request.body)
+    # print("response: {}".format(response))
+    # print("response text content:", response.text)
     #获取字节形式的相应内容并用utf-8格式来解码
-    print("response content:", response.content.decode())
-    print(response)
+    # print("response content:", response.content.decode())
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     # orderID_address = defaultdict(set)
     for order, address in data.items():
         orderID_address[order]=address
@@ -88,14 +88,15 @@ def add_orderIDs(orderID_list):
     :param orderID_list: 订单号列表
     """
     global orderIDs
+    global orderID_address
     print(f"orderID_list={orderID_list}")
     for orderID in orderID_list:
-        if orderID not in orderIDs:
+        if (orderID not in orderIDs) and (orderID not in orderID_address):
             orderIDs.add(orderID)
 
     print(f"orderIDs={orderIDs}")
     get_orders_address()
-    return True
+    return (True,True)
 
 
 def get_address(id_order):
@@ -105,32 +106,33 @@ def get_address(id_order):
     global orderID_address
     global ArmPis_1
     global ArmPis_2
-    # get_address_lock.acquire()
-    print(f"id_order={id_order}")
+    global get_address_lock
+    get_address_lock.acquire()
+
     ArmPi_id = id_order[0]
     orderID = id_order[1]
+    print(f"id_order={id_order},{ArmPi_id} get lock")
     state = False
     if ArmPi_id % 2 == 0:
-        ArmPis_2.add(ArmPi_id)
         if len(ArmPis_1) == 0:
+            ArmPis_2.add(ArmPi_id)
             state = True
     else:
-        ArmPis_1.add(ArmPi_id)
         if len(ArmPis_2) == 0:
+            ArmPis_1.add(ArmPi_id)
             state = True
     if orderID in orderID_address:
         res = {"state": state, "des": orderID_address[orderID]}
+        # if state:
+        #     del orderID_address[orderID]
         del orderID_address[orderID]
-        
-       
     else:
         res = {"state": state, "des": None}
         # return (True,res)
-    # get_address_lock.release()
+    get_address_lock.release()
+    print(f"{ArmPi_id} release lock")
     return (True,res)
     
-    
-
 
 def update_state(ArmPi_id):
     """
@@ -139,11 +141,13 @@ def update_state(ArmPi_id):
     """
     global ArmPis_1
     global ArmPis_2
+    print(f"ArmPi_id {ArmPi_id} finished")
     if ArmPi_id % 2 == 0:
         ArmPis_2.remove(ArmPi_id)
     else:
         ArmPis_1.remove(ArmPi_id)
-    return True
+    time.sleep(0.5)
+    return (True,True)
 
 
 if __name__ == "__main__":

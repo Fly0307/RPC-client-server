@@ -1,0 +1,397 @@
+strat Armpi RPC
+strat Armpi RPC
+Add Order IDs into orderIDs
+orderID_list=['000000005']
+orderIDs={'000000005'}
+通过http请求从数据中心批量获取订单
+Order: 000000005, Addresses: 成都
+Get adress from orderIDs id_order=[0, '000000005']
+id_order=(0, '000000005'),0 get lock
+0 release lock
+Add Order IDs into orderIDs
+orderID_list=['000000003', '000000009']
+orderIDs={'000000005', '000000003', '000000009'}
+通过http请求从数据中心批量获取订单
+Order: 000000005, Addresses: 成都
+Order: 000000003, Addresses: 上海
+Order: 000000009, Addresses: 上海
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[0, None]
+id_order=(0, None),0 get lock
+0 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Add Order IDs into orderIDs
+orderID_list=['000000003', '000000005']
+orderIDs={'000000005', '000000003', '000000009'}
+通过http请求从数据中心批量获取订单
+Order: 000000005, Addresses: 成都
+Order: 000000003, Addresses: 上海
+Order: 000000009, Addresses: 上海
+Get adress from orderIDs id_order=[0, '000000003']
+id_order=(0, '000000003'),0 get lock
+0 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[0, None]
+id_order=(0, None),0 get lock
+0 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Add Order IDs into orderIDs
+orderID_list=['000000005']
+orderIDs={'000000005', '000000003', '000000009'}
+通过http请求从数据中心批量获取订单
+Order: 000000005, Addresses: 成都
+Order: 000000003, Addresses: 上海
+Order: 000000009, Addresses: 上海
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[0, '000000005']
+id_order=(0, '000000005'),0 get lock
+0 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock
+Get adress from orderIDs id_order=[1, '000000009']
+id_order=(1, '000000009'),1 get lock
+1 release lock

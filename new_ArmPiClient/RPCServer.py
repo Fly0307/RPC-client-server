@@ -55,7 +55,7 @@ def application(request):
     """
     dispatcher["echo"] = lambda s: s
     dispatcher["add"] = lambda a, b: a + b
-    print(request.data)
+    # print(request.data)
     response = JSONRPCResponseManager.handle(request.data, dispatcher)
     return Response(response.json, mimetype="application/json")
 
@@ -76,7 +76,7 @@ def runbymainth(req, pas):
             if count > 200:
                 break
         if ret[2] is not None:
-            print(f"ret={ret},ret[2]={ret[2]}")
+            # print(f"ret={ret},ret[2]={ret[2]}")
             if ret[2][0]:
                 return ret[2]
             else:
