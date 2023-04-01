@@ -10,7 +10,8 @@ from collections import defaultdict
 
 QUEUE_RPC = queue.Queue(10)
 
-get_address_lock=threading.Lock()
+addorder_lock=threading.Lock()
+con = threading.Condition()
 
 orderIDs = set()
 orderID_address = {}
@@ -75,8 +76,12 @@ def get_orders_address():
     data = response.json()
     # print(data)
     # orderID_address = defaultdict(set)
+    addorder_lock.acquire()
     for order, address in data.items():
         orderID_address[order]=address
+        orderIDs.remove(order)
+    addorder_lock.release()
+        
     # del orderIDs
     # orderIDs=None
     for order, addresses in orderID_address.items():
@@ -90,9 +95,12 @@ def add_orderIDs(orderID_list):
     global orderIDs
     global orderID_address
     print(f"orderID_list={orderID_list}")
+
+    addorder_lock.acquire()
     for orderID in orderID_list:
         if (orderID not in orderIDs) and (orderID not in orderID_address):
             orderIDs.add(orderID)
+    addorder_lock.release()
 
     print(f"orderIDs={orderIDs}")
     get_orders_address()
@@ -106,31 +114,49 @@ def get_address(id_order):
     global orderID_address
     global ArmPis_1
     global ArmPis_2
-    global get_address_lock
-    get_address_lock.acquire()
 
     ArmPi_id = id_order[0]
     orderID = id_order[1]
-    print(f"id_order={id_order},{ArmPi_id} get lock")
+    print(f"id_order={id_order},{ArmPi_id} want get lock")
     state = False
+    # 没有地址信息则直接返回
+    if orderID not in orderID_address:
+        res = {"state": state, "des": None}
+        return res
+
+    #有地址信息继续获取
+    con.acquire()
     if ArmPi_id % 2 == 0:
-        if len(ArmPis_1) == 0:
-            ArmPis_2.add(ArmPi_id)
-            state = True
+        while len(ArmPis_1)!=0:
+            con.notify()
+            con.wait()
+        print(f"id_order={id_order},{ArmPi_id} get lock")
+        ArmPis_2.add(ArmPi_id)
+        state = True
+        # if len(ArmPis_1) == 0:
+        #     ArmPis_2.add(ArmPi_id)
+        #     state = True
     else:
-        if len(ArmPis_2) == 0:
-            ArmPis_1.add(ArmPi_id)
-            state = True
+        while len(ArmPis_2)!=0:
+            con.notify()
+            con.wait()
+        print(f"id_order={id_order},{ArmPi_id} get lock")
+        ArmPis_1.add(ArmPi_id)
+        state = True
+
     if orderID in orderID_address:
         res = {"state": state, "des": orderID_address[orderID]}
         # if state:
         #     del orderID_address[orderID]
         del orderID_address[orderID]
     else:
-        res = {"state": state, "des": None}
+        res = {"state": False, "des": None}
         # return (True,res)
-    get_address_lock.release()
     print(f"{ArmPi_id} release lock")
+
+    con.notify()
+    con.release()
+    
     return (True,res)
     
 

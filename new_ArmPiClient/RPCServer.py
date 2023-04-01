@@ -69,11 +69,11 @@ def runbymainth(req, pas):
         count = 0
         # ret[2] =  req(pas)
         # print('ret', ret)
-        # 2s以上未返回则超时
+        # 10s以上未返回则超时
         while ret[2] is None:
             time.sleep(0.01)
             count += 1
-            if count > 200:
+            if count > 1000:
                 break
         if ret[2] is not None:
             # print(f"ret={ret},ret[2]={ret[2]}")
