@@ -116,10 +116,13 @@ def add_orderIDs(orderID_list):
 
 def isFree(ArmId, bitmap):
     """判断ArmID相邻bitmap，均为0时返回True"""
+    global lock
+    lock.acquire()
     left = 1
     if ArmId > 0:
         left = bitmap & (1 << (ArmId - 1))
     right = bitmap & (1 << (ArmId + 1))
+    lock.release()
     return bool(~(left | right))
 
 
@@ -186,7 +189,7 @@ def get_address(id_order):
         # return (True,res)
     print(f"{ArmPi_id} release lock")
 
-    # 放锁阶段
+    # 放锁阶段 2PL
     lock_manager.notify(ArmPi_id + 1)
 
     if ArmPi_id > 0:
@@ -194,9 +197,6 @@ def get_address(id_order):
         lock_manager.release_lock(ArmPi_id - 1)
     lock_manager.release_lock(ArmPi_id + 1)
     lock_manager.release_lock(ArmPi_id)
-    # con.notify_all()
-    # con.notify()
-    # con.release()
 
     return (True, res)
 
