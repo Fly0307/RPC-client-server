@@ -135,7 +135,7 @@ def get_address(id_order):
     # global ArmPis_1
     # global ArmPis_2
     global bitmap, lock, lock_manager
-
+    print(f"id_order={id_order}")
     ArmPi_id = id_order[0]
     orderID = id_order[1]
     print(f"id_order={id_order},{ArmPi_id} want get lock")
@@ -150,26 +150,33 @@ def get_address(id_order):
         return res
 
     # 有地址信息继续获取
+    
     lock_manager.acquire_lock(ArmPi_id, True)
+    print(f"{ArmPi_id} get it's lock")
     # 拿锁阶段 2PL
     while True:
-        if ArmPi_id > 0:
+        if ArmPi_id > 1:
             if lock_manager.acquire_lock(ArmPi_id - 1, False):
                 if lock_manager.acquire_lock(ArmPi_id + 1, False):
                     # 拿锁成功
+                    print(f"{ArmPi_id} get lock")
                     break
                 else:
                     # 拿锁失败放锁
                     lock_manager.release_lock(ArmPi_id - 1)
+                    print(f"{ArmPi_id} begin wait")
                     lock_manager.wait(ArmPi_id)
             else:
+                print(f"{ArmPi_id} begin wait")
                 lock_manager.wait(ArmPi_id)
         else:
             if lock_manager.acquire_lock(ArmPi_id + 1, False):
                 # 拿锁成功
+                print(f"{ArmPi_id} get lock")
                 break
             else:
                 # 拿锁失败放锁
+                print(f"{ArmPi_id} begin wait")
                 lock_manager.wait(ArmPi_id)
 
     while isFree(ArmPi_id, bitmap) is not True:

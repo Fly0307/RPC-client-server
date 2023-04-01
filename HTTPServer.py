@@ -47,7 +47,7 @@ class RequestHandler(BaseHTTPRequestHandler):
     
     def do_POST(self):
         # 解析请求数据
-        print(self)
+        # print(self)
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
         order_numbers = json.loads(post_data)["orders"]

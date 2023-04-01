@@ -5,11 +5,13 @@ class ConditionManager:
         self.count = count
         self.conditions = [threading.Condition() for _ in range(count)]
         
-    def acquire_lock(self, index,flg=True):
-        self.locks[index].acquire(flg)
+    def acquire_lock(self, index,flg):
+        with self.conditions[index]:
+            self.locks[index].acquire(flg)
 
     def release_lock(self, index,):
-        self.locks[index].release()
+        with self.conditions[index]:
+            self.locks[index].release()
 
     def wait(self, index):
         with self.conditions[index]:
